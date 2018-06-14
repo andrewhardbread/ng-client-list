@@ -1,0 +1,19 @@
+<div class="main" *ngIf="client">
+    <img class="img" src="{{client.general.avatar}}"/>
+    <div class="info">
+      <div class="name">
+        {{client.general.lastName}} {{client.general.firstName}}
+      </div>
+      <div class="job">
+        {{client.job.title}} - {{client.job.company}}
+      </div>
+      <div class="contact">
+        <div><fa class="icon" name="phone"></fa>{{client.contact.phone}}</div>
+        <div><fa class="icon" name="envelope"></fa>{{client.contact.email}}</div>
+        <div><fa class="icon" name="map-marker"></fa>{{client.address.street}}, {{client.address.city}}, {{client.address.country}} {{client.address.zipCode}}</div>
+      </div>
+    </div>
+  </div>
+<div class="main d-flex justify-content-center" *ngIf="!client">
+  Select a client from the list
+</div>
