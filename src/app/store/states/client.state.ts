@@ -7,5 +7,5 @@ export interface ClientState {
 
 export const initialClientState: ClientState = {
   clients: [],
-  selectedClient: 0
+  selectedClient: null
 };

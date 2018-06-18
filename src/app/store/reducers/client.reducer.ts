@@ -15,6 +15,9 @@ export function reducer(state: ClientState = initialClientState, action: ClientA
       return { ...state, selectedClient: action.payload };
     }
 
+    default:
+      return state;
+
   }
 
 }

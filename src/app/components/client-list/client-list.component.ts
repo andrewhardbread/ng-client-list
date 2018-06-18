@@ -23,7 +23,6 @@ export class ClientListComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<AppState>
   ) {
-    this.store.dispatch(new ClientActions.RequestClients(''));
     this.store
       .pipe(
         select(fromRoot.getClients),
@@ -34,6 +33,7 @@ export class ClientListComponent implements OnInit, OnDestroy {
           this.clients = clients;
         }
       );
+    this.store.dispatch(new ClientActions.RequestClients(''));
   }
 
   ngOnInit() {
