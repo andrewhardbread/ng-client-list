@@ -21,11 +21,9 @@ export class ClientEffects {
   loadClients$ = this.actions$.ofType(ClientActions.REQUEST_CLIENTS)
     .pipe(
       switchMap((action: ClientActions.Action) => {
-        console.log(action.type);
-        return this.clientsService.getClients();
+        return this.clientsService.getClients(action.payload as string);
       }),
       map((clients: Client[]) => {
-        console.log('got clients');
         return new ClientActions.LoadClients(clients);
       })
     );

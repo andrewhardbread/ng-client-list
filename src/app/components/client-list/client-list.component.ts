@@ -44,8 +44,8 @@ export class ClientListComponent implements OnInit, OnDestroy {
     this.alive = false;
   }
 
-  search() {
-    // request action with query string as a payload goes here...
+  search(string: string) {
+    this.store.dispatch(new ClientActions.RequestClients(string));
   }
 
 }

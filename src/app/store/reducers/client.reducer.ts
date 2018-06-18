@@ -8,7 +8,7 @@ export function reducer(state: ClientState = initialClientState, action: ClientA
   switch (action.type) {
 
     case ClientActions.LOAD_CLIENTS: {
-      return { ...state, clients: [...action.payload]};
+      return { ...state, clients: action.payload ? [...action.payload] : []};
     }
 
     case ClientActions.SELECT_CLIENT: {

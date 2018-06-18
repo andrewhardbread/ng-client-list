@@ -17,10 +17,11 @@ export class ClientsService {
   ) {
   }
 
-  getClients(): Observable<Client[]> {
-    return this.http.get(this.dataUrl)
+  getClients(string: string): Observable<Client[]> {
+    const params = { string };
+    return this.http.get(this.dataUrl, { params })
       .pipe(
-        map((body: any) => body.data.docs)
+        map((body: any) => body.data)
       );
   }
 

@@ -1,7 +1,7 @@
 <div>
   <div class="search">
-    <input type="text" class="input" placeholder="Search query goes here...">
-    <button class="btn btn-secondary" type="button" (click)="search()">Search</button>
+    <input type="text" class="input" #string placeholder="Search query goes here...">
+    <button class="btn btn-secondary" type="button" (click)="search(string.value)">Search</button>
   </div>
   <div class="list" *ngIf="clients.length">
     <app-client-item class="item" *ngFor="let client of clients; let i = index;" [client]="client" [index]="i">
