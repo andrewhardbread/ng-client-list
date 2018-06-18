@@ -1,15 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { StoreModule } from '@ngrx/store';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
-import { ClientListComponent } from './client-list/client-list.component';
-import { ClientDetailsComponent } from './client-details/client-details.component';
-import { ClientItemComponent } from './client-list/client-item/client-item.component';
-import {ClientsService} from './clients.service';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
-import {FormsModule} from '@angular/forms';
+import { ClientListComponent } from './components/client-list/client-list.component';
+import { ClientDetailsComponent } from './components/client-details/client-details.component';
+import { ClientItemComponent } from './components/client-list/client-item/client-item.component';
+
+import { reducer } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { ClientEffects } from './store/effects/client.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { initialAppState } from './app.state';
 
 
 @NgModule({
@@ -23,12 +30,19 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     AngularFontAwesomeModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({
+      clientState: reducer
+    },
+      {
+        initialState: initialAppState
+    }),
+    EffectsModule.forRoot([
+      ClientEffects
+    ]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [
-    ClientsService,
-    HttpClient
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
