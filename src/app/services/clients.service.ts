@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { Client } from '../models/client.model';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,19 +18,7 @@ export class ClientsService {
 
   getClients(string: string): Observable<Client[]> {
     const params = { string };
-    return this.http.get(this.dataUrl, { params })
-      .pipe(
-        map((body: any) => {
-          const clients = [ ...body.data ];
-          return clients.map(
-            (client) => {
-              client.id = client._id;
-              delete client._id;
-              return client;
-            }
-          );
-        })
-      );
+    return this.http.get<Client[]>(this.dataUrl, { params });
   }
 
 }
