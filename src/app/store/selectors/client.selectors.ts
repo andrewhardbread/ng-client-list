@@ -1,13 +1,18 @@
-import * as fromAdapter from '../adapters/client.adapter';
-
-export * from './client.reducer';
-
-import { AppState } from '../../app.state';
-import { ClientState } from '../states/client.state';
-
 import { createSelector } from '@ngrx/store';
-import { Client } from '../../models/client.model';
 import { Dictionary } from '@ngrx/entity/src/models';
+
+import { adapter } from '../adapters/client.adapter';
+
+import { Client } from '../../models/client.model';
+
+import { ClientState } from '../states/client.state';
+import { AppState } from '../../app.state';
+
+export const {
+  selectEntities,
+  selectAll,
+} = adapter.getSelectors();
+
 
 export const getClientState = (state: AppState) => state.clientState;
 
@@ -20,12 +25,12 @@ export const getSelectedIndex = createSelector(
 
 export const getAllClients = createSelector(
   getClientState,
-  fromAdapter.getAllClients
+  selectAll
 );
 
 const getClientDictionary = createSelector(
   getClientState,
-  fromAdapter.getClientDictionary
+  selectEntities
 );
 
 export const getSelectedClient = createSelector(

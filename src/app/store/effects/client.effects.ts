@@ -18,7 +18,7 @@ export class ClientEffects {
   ) {}
 
   @Effect()
-  loadClients$ = this.actions$.ofType(ClientActions.REQUEST_CLIENTS)
+  loadClients$ = this.actions$.ofType(ClientActions.Actions.REQUEST_CLIENTS)
     .pipe(
       switchMap((action: ClientActions.Action) => {
         return this.clientsService.getClients(action.payload as string);

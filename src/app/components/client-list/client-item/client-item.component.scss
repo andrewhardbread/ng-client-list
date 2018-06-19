@@ -8,10 +8,6 @@
   &:hover {
     background-color: darken(#fff, 10%);
   }
-
-  &:active {
-    background-color: darken(#fff, 20%);
-  }
 }
 
 .img {
@@ -28,6 +24,18 @@
 }
 
 .job {
+  width: 170px;
   font-size: 0.7rem;
   color: #5b5b5b;
+  margin-bottom: 0;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .7rem;
+  height: 30px;
+  padding: 2px 4px;
+  align-self: center;
 }

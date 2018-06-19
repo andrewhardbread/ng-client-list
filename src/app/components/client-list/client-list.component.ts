@@ -5,7 +5,8 @@ import { select, Store } from '@ngrx/store';
 import { Client } from '../../models/client.model';
 
 import * as ClientActions from '../../store/actions/client.actions';
-import * as fromRoot from '../../store/reducers';
+import * as ClientSelectors from '../../store/selectors/client.selectors';
+
 import { takeWhile } from 'rxjs/operators';
 
 import { AppState } from '../../app.state';
@@ -25,7 +26,7 @@ export class ClientListComponent implements OnInit, OnDestroy {
   ) {
     this.store
       .pipe(
-        select(fromRoot.getAllClients),
+        select(ClientSelectors.getAllClients),
         takeWhile( () => this.alive )
       )
       .subscribe(

@@ -12,11 +12,14 @@ export function reducer(state: ClientState = initialClientState, action: ClientA
 
   switch (action.type) {
 
-    case ClientActions.LOAD_CLIENTS: {
+    case ClientActions.Actions.LOAD_CLIENTS: {
       return adapter.addAll(action.payload, state);
     }
 
-    case ClientActions.SELECT_CLIENT: {
+    case ClientActions.Actions.REMOVE_CLIENT:
+      return adapter.removeOne(action.payload, state);
+
+    case ClientActions.Actions.SELECT_CLIENT: {
       return { ...state, selectedClient: action.payload };
     }
 

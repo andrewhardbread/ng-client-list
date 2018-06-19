@@ -11,7 +11,7 @@ import { ClientListComponent } from './components/client-list/client-list.compon
 import { ClientDetailsComponent } from './components/client-details/client-details.component';
 import { ClientItemComponent } from './components/client-list/client-item/client-item.component';
 
-import { reducer } from './store/reducers';
+import { reducer } from './store/reducers/client.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ClientEffects } from './store/effects/client.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';

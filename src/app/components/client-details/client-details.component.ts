@@ -5,8 +5,9 @@ import { takeWhile } from 'rxjs/operators';
 
 import { Client } from '../../models/client.model';
 
-import * as fromRoot from '../../store/reducers';
 import { AppState } from '../../app.state';
+
+import * as ClientSelectors from '../../store/selectors/client.selectors';
 
 @Component({
   selector: 'app-client-details',
@@ -23,7 +24,7 @@ export class ClientDetailsComponent implements OnDestroy {
   ) {
 
     this.store.pipe(
-      select(fromRoot.getSelectedClient),
+      select(ClientSelectors.getSelectedClient),
       takeWhile(() => this.alive)
     ).subscribe(
       (client: Client) => {

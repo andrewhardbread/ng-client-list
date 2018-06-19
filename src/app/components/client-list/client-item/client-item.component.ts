@@ -25,4 +25,9 @@ export class ClientItemComponent implements OnInit {
   selectClient() {
     this.store.dispatch(new ClientActions.SelectClient(this.client.id));
   }
+
+  removeClient(event: Event) {
+    event.stopImmediatePropagation();
+    this.store.dispatch(new ClientActions.RemoveClient(this.client.id));
+  }
 }
