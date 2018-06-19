@@ -16,7 +16,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { ClientEffects } from './store/effects/client.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { initialAppState } from './app.state';
 
 
 @NgModule({
@@ -33,9 +32,6 @@ import { initialAppState } from './app.state';
     FormsModule,
     StoreModule.forRoot({
       clientState: reducer
-    },
-      {
-        initialState: initialAppState
     }),
     EffectsModule.forRoot([
       ClientEffects
