@@ -25,7 +25,7 @@ export class ClientListComponent implements OnInit, OnDestroy {
   ) {
     this.store
       .pipe(
-        select(fromRoot.getClients),
+        select(fromRoot.getAllClients),
         takeWhile( () => this.alive )
       )
       .subscribe(

@@ -20,7 +20,7 @@ export class RequestClients implements Action {
 export class SelectClient implements Action {
   readonly type = SELECT_CLIENT;
 
-  constructor(public payload: number) {}
+  constructor(public payload: string) {}
 }
 
 export type Action = RequestClients | LoadClients | SelectClient;

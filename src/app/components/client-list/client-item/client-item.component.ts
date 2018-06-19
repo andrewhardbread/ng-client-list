@@ -23,7 +23,6 @@ export class ClientItemComponent implements OnInit {
   }
 
   selectClient() {
-    // 3 is mocked
-    this.store.dispatch(new ClientActions.SelectClient(this.index));
+    this.store.dispatch(new ClientActions.SelectClient(this.client.id));
   }
 }

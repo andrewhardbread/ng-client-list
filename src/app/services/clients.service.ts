@@ -21,7 +21,16 @@ export class ClientsService {
     const params = { string };
     return this.http.get(this.dataUrl, { params })
       .pipe(
-        map((body: any) => body.data)
+        map((body: any) => {
+          const clients = [ ...body.data ];
+          return clients.map(
+            (client) => {
+              client.id = client._id;
+              delete client._id;
+              return client;
+            }
+          );
+        })
       );
   }
 
